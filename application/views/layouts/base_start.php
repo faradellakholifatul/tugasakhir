@@ -9,6 +9,11 @@
         <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
         
         <style>
+            .container .row {
+                position: absolute;
+                top: 20%;
+                left: 35%;
+            }
             .navbar-brand{
                 font-family: impact;
                 font-size: 20pt;
