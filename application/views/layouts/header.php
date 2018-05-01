@@ -1,8 +1,8 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -25,7 +25,7 @@
                 </li>
                 <li><a href=#>HUBUNGI KAMI</a></li>
                 <li><a href=#><img class="image" border="0" src="assets/image/troli.png" width="17px" height="15px">TROLI</a></li>
-                <li><a href=#><img class="image" border="0" src="assets/image/login.png" width="12px" height="13px">LOGIN</a></li>
+                <li><a href="<?php echo site_url()?>/login"><img class="image" border="0" src="assets/image/login.png" width="12px" height="13px">LOGIN</a></li>
             </ul>
         </div>
 </nav>
