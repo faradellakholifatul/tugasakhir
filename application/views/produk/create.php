@@ -14,8 +14,8 @@
     <label> Kategori </label>
           <select class="form-control" name ="kategori" id="kategori"> 
           <option selected> --Pilih Kategori-- </option>
-          <?php foreach ($dataKategori as $row) { ?>
-          <option value="<?php echo $row->id_kategori?>"><?php echo $row->nama_kategori?></option>
+          <?php foreach ($dataKategori as $k) { ?>
+          <option value="<?php echo $k->id_kategori?>"><?php echo $k->nama_kategori?></option>
         <?php } ?>
         </select>
     </div>
