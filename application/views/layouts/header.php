@@ -23,7 +23,14 @@
                 </li>
                 <li><a href=#>HUBUNGI KAMI</a></li>
                 <li><a href=#><img class="image" border="0" src="assets/image/troli.png" width="17px" height="15px">TROLI</a></li>
-                <li><a href="<?php echo base_url()?>login"><img class="image" border="0" src="assets/image/login.png" width="12px" height="13px">LOGIN</a></li>
+                <?php if($this->session->status==('Logged'))
+                            { ?>
+                                <li><a href="<?php echo base_url()?>Login/logout"><img class="image" border="0" src="assets/image/login.png" width="12px" height="13px">LOGOUT</a></li>           
+                            <?php }
+                            else
+                            { ?>
+                                <li><a href="<?php echo base_url()?>login"><img class="image" border="0" src="assets/image/login.png" width="12px" height="13px">LOGIN</a></li>
+                            <?php } ?>
             </ul>
         </div>
 </nav>
