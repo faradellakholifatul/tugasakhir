@@ -32,18 +32,8 @@ class Produk_model extends CI_Model {
 
         public function update($id_produk, $data = [])
         {
-            $ubah = array(
-                'nama_produk' => $data['nama_produk'],
-                'kategori' => $data['kategori'],
-                'deskripsi' => $data['deskripsi'],
-                'komposisi' => $data['komposisi'],
-                'indikasi' => $data['indikasi'],
-                'stok' => $data['stok'],
-                'harga' => $data['harga']
-            );
-
             $this->db->where('id_produk', $id_produk);
-            $this->db->update('produk', $ubah);
+            $this->db->update('produk', $data);
         }
 
 
