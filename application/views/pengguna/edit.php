@@ -141,44 +141,54 @@
 
         <!-- page content -->
         <div class="right_col">
-          
-          <br/><br/><br/><br/>
-          <div class="container">
-            <legend>Kategori Produk </legend>
-            <?php if (isset($results)) { ?>
-            <table class="table table-striped">
-              <thead>
-                  <th>Kategori</th>
-                  <th><a class="btn btn-primary" href="<?php echo base_url('kategori/create') ?>">
-                      Tambah
-                    </a>
-                  </th>
-              </thead>
-              <tbody>
-              <?php foreach ($results as $data) { ?>
-              <tr>
-                <td>
-                  <a href="<?php echo base_url('kategori/show/'.$data->id_kategori) ?>">
-                  <?php echo $data->nama_kategori ?>
-                </td>
-                <td>
-                  <?php echo form_open('kategori/destroy/'.$data->id_kategori)  ?>
-                  <a class="btn btn-info" href="<?php echo base_url('kategori/edit/'.$data->id_kategori) ?>">
-                    Ubah
-                  </a>
-                  <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
-                  <?php echo form_close() ?>
-                </td>
-              </tr>
-              <?php } ?>
-              </tbody>
-            </table>
-            <?php echo $links ?>
-            <?php } else { ?>
-            <div>Tidak ada data</div>
-            <?php } ?>
-          </div>
+            <div class="container">
+      <br/><br/><br/>
+      <legend>Edit Kategori</legend>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+      <?php echo form_open('pengguna/update/'.$pengguna->id); ?>
+        <?php echo form_hidden('id', $pengguna->id) ?>
+        <div class="form-group">
+          <label for="nama">Nama</label>
+          <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" value="<?php echo $pengguna->nama ?>">
+        </div>
+        <div class="form-group">
+          <label for="alamat">Alamat</label>
+          <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" value="<?php echo $pengguna->alamat ?>">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan Email" value="<?php echo $pengguna->email ?>">
+        </div>
+        <div class="form-group">
+          <label for="notelp">No. Telp</label>
+          <input type="text" class="form-control" id="notelp" name="notelp" placeholder="Masukkan No. Telp" value="<?php echo $pengguna->notelp ?>">
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" value="<?php echo $pengguna->username ?>">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan Password" value="<?php echo $pengguna->password ?>">
+        </div>
+        <div class="form-group">
+          <label> Privilege </label>
+              <select class="form-control" name ="privilege" id="privilege"> 
+                <option selected>
+                <?php
+                      echo $pengguna->privilege;
+                ?>
+                </option>
+                <option value="User">User</option>
+                <option value="Administrator">Administrator</option>
+            </select>
+        </div>
 
+        <a class="btn btn-info" href="<?php echo base_url('kategori/index') ?>">Kembali</a>
+        <button type="submit" class="btn btn-primary">OK</button>
+      <?php echo form_close(); ?>
+      </div>
+</div>
         </div>        
         <!-- /page content -->
 
@@ -236,3 +246,5 @@
 	
   </body>
 </html>
+
+

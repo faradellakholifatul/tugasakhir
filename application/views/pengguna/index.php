@@ -1,3 +1,9 @@
+<?php
+if($this->session->privilege != 'Administrator')
+    {
+        redirect('home');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -71,14 +77,14 @@
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url('kategori/create')?>">Kategori</a></li>
                       <li><a href="<?php echo base_url('produk/create')?>">Produk</a></li>
-                      <li><a href="form.html">User</a></li>
+                      <li><a href="<?php echo base_url('pengguna/create')?>">User</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-table"></i> Tabel <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url('kategori/')?>">Kategori</a></li>
                       <li><a href="<?php echo base_url('produk/')?>">Produk</a></li>
-                      <li><a href="#">User</a></li>
+                      <li><a href="<?php echo base_url('pengguna/create')?>">User</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -144,12 +150,18 @@
           
           <br/><br/><br/><br/>
           <div class="container">
-            <legend>Kategori Produk </legend>
+            <legend>User </legend>
             <?php if (isset($results)) { ?>
             <table class="table table-striped">
               <thead>
-                  <th>Kategori</th>
-                  <th><a class="btn btn-primary" href="<?php echo base_url('kategori/create') ?>">
+                  <th>Nama</th>
+                  <th>Alamat</th>
+                  <th>Email</th>
+                  <th>No. Telp</th>
+                  <th>Username</th>
+                  <th>Password</th>
+                  <th>Privilege</th>
+                  <th><a class="btn btn-primary" href="<?php echo base_url('pengguna/create') ?>">
                       Tambah
                     </a>
                   </th>
@@ -158,12 +170,36 @@
               <?php foreach ($results as $data) { ?>
               <tr>
                 <td>
-                  <a href="<?php echo base_url('kategori/show/'.$data->id_kategori) ?>">
-                  <?php echo $data->nama_kategori ?>
+                  <a href="<?php echo base_url('pengguna/show/'.$data->id) ?>">
+                  <?php echo $data->nama ?>
                 </td>
                 <td>
-                  <?php echo form_open('kategori/destroy/'.$data->id_kategori)  ?>
-                  <a class="btn btn-info" href="<?php echo base_url('kategori/edit/'.$data->id_kategori) ?>">
+                  <a href="<?php echo base_url('pengguna/show/'.$data->id) ?>">
+                  <?php echo $data->alamat ?>
+                </td>
+                <td>
+                  <a href="<?php echo base_url('pengguna/show/'.$data->id) ?>">
+                  <?php echo $data->email ?>
+                </td>
+                <td>
+                  <a href="<?php echo base_url('pengguna/show/'.$data->id) ?>">
+                  <?php echo $data->notelp ?>
+                </td>
+                <td>
+                  <a href="<?php echo base_url('pengguna/show/'.$data->id) ?>">
+                  <?php echo $data->username ?>
+                </td>
+                <td>
+                  <a href="<?php echo base_url('pengguna/show/'.$data->id) ?>">
+                  <?php echo $data->password ?>
+                </td>
+                <td>
+                  <a href="<?php echo base_url('pengguna/show/'.$data->id) ?>">
+                  <?php echo $data->privilege ?>
+                </td>
+                <td>
+                  <?php echo form_open('pengguna/destroy/'.$data->id)  ?>
+                  <a class="btn btn-info" href="<?php echo base_url('pengguna/edit/'.$data->id) ?>">
                     Ubah
                   </a>
                   <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
