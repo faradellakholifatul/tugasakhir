@@ -13,6 +13,34 @@
         {
             $this->load->view('apotek/index');
         }
+
+        public function register()
+        {
+            $this->load->view('apotek/register');
+        }
+
+        public function kontak()
+        {
+            $this->load->view('apotek/kontak');
+        }
+
+        public function faq()
+        {
+            $this->load->view('apotek/faq');
+            
+        }
+
+        public function profper()
+        {
+            $this->load->view('apotek/profper');
+            
+        }
+
+        public function vismis()
+        {
+            $this->load->view('apotek/vismis');
+            
+        }
     
     }
     

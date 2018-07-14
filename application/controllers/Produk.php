@@ -12,6 +12,17 @@ class Produk extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('pagination');
         $this->load->model('Produk_model');
+        //Konfigurasi Upload
+        $config['upload_path']      = './assets/image/';
+        $config['allowed_types']    = 'gif|jpg|png';
+        $config['max_size']         = 15000;
+        $config['max_width']        = 13660;
+        $config['max_height']       = 7680;
+        $this->load->library('upload', $config);
+        if($this->session->privilege != 'Administrator')
+        {
+            redirect('home');
+        }
     }
 
     public function index()
@@ -66,12 +77,27 @@ class Produk extends CI_Controller {
     {
         $kategori = $this->Produk_model->get_kategori();
         $dataKategori = ['dataKategori' => $kategori];
+        $data = [
+            'error' => ''
+        ];
         $this->load->view('produk/create', $dataKategori);
     }
 
     public function store()
     {
-        $data = ['nama_produk' => $this->input->post('nama_produk'),
+        // Percobaan Upload
+        if ( ! $this->upload->do_upload('gambar'))
+        {
+            $data = [ 
+                'error' => $this->upload->display_errors()
+            ];
+            $this->load->view('produk/index', $data);
+        }
+        else
+        {
+            // Insert data
+            $data = ['nama_produk' => $this->input->post('nama_produk'),
+                'gambar' =>$this->upload->data('file_name'),
                 'kategori' => $this->input->post('kategori'),
                 'deskripsi' => $this->input->post('deskripsi'),
                 'komposisi' => $this->input->post('komposisi'),
@@ -79,24 +105,13 @@ class Produk extends CI_Controller {
                 'stok' =>$this->input->post('stok'),
                 'harga' => $this->input->post('harga')
                  ];
-        $rules = [
-            [
-            'field' => 'nama_produk',
-            'label' => 'nama_produk',
-            'rules' => 'trim|required'
-            ]
-        ];
-        
-        $this->form_validation->set_rules($rules);
-
-        if ($this->form_validation->run()) {
-            $result = $this->Produk_model->insert($data);
-            if ($result) {
-                redirect('produk');
+            
+            if ($this->Produk_model->insert($data))
+            { 
+                redirect('produk/index'); 
             }
-        } else {
-            redirect('produk/create');
         }
+
     }
 
     public function show($id_produk)
@@ -121,18 +136,45 @@ class Produk extends CI_Controller {
     {
         // TODO: implementasi update data berdasarkan $id
         $id_produk = $this->input->post('id_produk');
-        $data = array(
-            'nama_produk' => $this->input->post('nama_produk'),
-            'kategori' => $this->input->post('kategori'),
-            'deskripsi' => $this->input->post('deskripsi'),
-            'komposisi' => $this->input->post('komposisi'),
-            'indikasi' => $this->input->post('indikasi'),
-            'stok' => $this->input->post('stok'),
-            'harga' => $this->input->post('harga')
-        );
+        if(! $this->upload->do_upload('gambar'))
+        {
+            $data = [
+                'nama_produk' => $this->input->post('nama_produk'),
+                'kategori' => $this->input->post('kategori'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'komposisi' => $this->input->post('komposisi'),
+                'indikasi' => $this->input->post('indikasi'),
+                'stok' => $this->input->post('stok'),
+                'harga' => $this->input->post('harga')
+            ];
+            $result = $this->Produk_model->update($id_produk, $data);
+            if(!$result)
+            {
+                redirect('produk/index');
+            }
+        }
+        else
+        {
+            $data = [
+                'nama_produk' => $this->input->post('nama_produk'),
+                'gambar' => $this->upload->data('file_name'),
+                'kategori' => $this->input->post('kategori'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'komposisi' => $this->input->post('komposisi'),
+                'indikasi' => $this->input->post('indikasi'),
+                'stok' => $this->input->post('stok'),
+                'harga' => $this->input->post('harga')
+            ];
 
-        $this->Produk_model->update($id_produk, $data);
-        redirect('produk');
+            $hapgam = $this->Produk_model->show($id_produk);
+            unlink('./assets/image/'.$hapgam->gambar);
+            $result = $this->Produk_model->update($id_produk, $data);
+
+            if(!$result)
+            {
+                redirect('produk/index');
+            }
+        }
     }
 
     public function destroy($id_produk)

@@ -11,6 +11,11 @@
             $this->load->library('form_validation');
 		    $this->load->library('pagination');
             $this->load->model('Kategori_model');
+
+            if($this->session->privilege != 'Administrator')
+            {
+                redirect('home');
+            }
         }
 
         /*public function index()
