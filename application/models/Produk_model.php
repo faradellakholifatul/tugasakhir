@@ -14,19 +14,19 @@ class Produk_model extends CI_Model {
         public function getEtical()
         {
             $query = $this->db->query('select*from produk where kategori=1');
-            return $query->$result;
+            return $query->result();
         }
 
         public function getGeneric()
         {
             $query = $this->db->query('select*from produk where kategori=2');
-            return $query->$result;
+            return $query->result();
         }
 
         public function getLainnya()
         {
             $query = $this->db->query('select*from produk where kategori=4');
-            return $query->$result;
+            return $query->result();
         }
 
         public function getTotal()
