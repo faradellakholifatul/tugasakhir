@@ -22,6 +22,18 @@
             $this->load->view('apotek/etical', $data);
         }
 
+        public function generic()
+        {
+            $data['getGeneric'] = $this->Produk_model->getGeneric();
+            $this->load->view('apotek/generic', $data);
+        }
+
+        public function lainnya()
+        {
+            $data['getLainnya'] = $this->Produk_model->getLainnya();
+            $this->load->view('apotek/lainnya', $data);
+        }
+
         public function register()
         {
             $this->load->view('apotek/register');
