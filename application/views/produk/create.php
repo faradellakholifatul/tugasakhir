@@ -71,14 +71,14 @@
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url('kategori/create')?>">Kategori</a></li>
                       <li><a href="<?php echo base_url('produk/create')?>">Produk</a></li>
-                      <li><a href="form.html">User</a></li>
+                      <li><a href="<?php echo base_url('pengguna/create')?>">User</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-table"></i> Tabel <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url('kategori/')?>">Kategori</a></li>
                       <li><a href="<?php echo base_url('produk/')?>">Produk</a></li>
-                      <li><a href="#">User</a></li>
+                      <li><a href="<?php echo base_url('pengguna/')?>">User</a></li>
                     </ul>
                   </li>
                 </ul>
