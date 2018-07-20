@@ -183,9 +183,9 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="#">Kontak</a>
+                                                <li><a href="<?php echo base_url() ?>home/kontak">Kontak</a>
                                                 </li>
-                                                <li><a href="#">FAQ</a>
+                                                <li><a href="<?php echo base_url() ?>home/faq">FAQ</a>
                                                 </li>
                                             </ul>
                                     </div>
@@ -257,9 +257,16 @@
                 <img src="<?php echo base_url('assets/img/blog2.jpg')?>" class="img-responsive" alt="Example blog post alt">
                     </br>
 
-                <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris
-                    placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum
-                    rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+               
+                <span align="justify">Healthy Pharma adalah perusahaan industri farmasi pertama di Indonesia 
+                yang didirikan oleh Pemerintah Hindia Belanda tahun 1817. Nama perusahaan ini pada awalnya 
+                adalah NV Chemicalien Handle Rathkamp & Co. Berdasarkan kebijaksanaan nasionalisasi atas eks p
+                erusahaan Belanda di masa awal kemerdekaan, pada tahun 1958, Pemerintah Republik Indonesia 
+                melakukan peleburan sejumlah perusahaan farmasi menjadi PNF (Perusahaan Negara Farmasi) 
+                Bhinneka Kimia Farma. Kemudian pada tanggal 16 Agustus 1971, bentuk badan hukum PNF diubah 
+                menjadi Perseroan Terbatas, sehingga nama perusahaan berubah menjadi PT Healthy Pharma (Persero).
+                </span>
+                
             </div>
 
 

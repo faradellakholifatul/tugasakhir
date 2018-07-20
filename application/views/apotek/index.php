@@ -141,9 +141,9 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="category.html">Profil Perusahaan</a>
+                                                <li><a href="<?php echo base_url()?>home/profper">Profil Perusahaan</a>
                                                 </li>
-                                                <li><a href="category.html">Visi dan Misi</a>
+                                                <li><a href="<?php echo base_url()?>home/vismis">Visi dan Misi</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -185,7 +185,7 @@
                                             <ul>
                                                 <li><a href="<?php echo base_url() ?>home/kontak">Kontak</a>
                                                 </li>
-                                                <li><a href="#">FAQ</a>
+                                                <li><a href="<?php echo base_url() ?>home/faq">FAQ</a>
                                                 </li>
                                             </ul>
                                     </div>

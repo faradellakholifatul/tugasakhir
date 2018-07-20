@@ -183,9 +183,9 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="#">Kontak</a>
+                                                <li><a href="<?php echo base_url()?>home/kontak">Kontak</a>
                                                 </li>
-                                                <li><a href="#">FAQ</a>
+                                                <li><a href="<?php echo base_url()?>home/faq">FAQ</a>
                                                 </li>
                                             </ul>
                                     </div>
@@ -257,9 +257,19 @@
                 <img src="<?php echo base_url('assets/img/blog2.jpg')?>" class="img-responsive" alt="Example blog post alt">
                     </br>
 
-                <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris
-                    placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum
-                    rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+                <p><center><strong>VISI</strong><br/><br/>
+
+                Menjadi perusahaan Healthcare pilihan utama yang terintegrasi dan menghasilkan nilai yang berkesinambungan.<br/><br/></center>
+
+                <strong><center>MISI</center></strong><br/>
+                <span align="justify">
+                <ol>
+                    <li>Melakukan aktivitas usaha di bidang-bidang industri kimia dan farmasi, perdagangan dan jaringan distribusi, retail farmasi dan layanan kesehatan serta optimalisasi aset</li><br/>
+                    <li>Mengelola perusahaan secara Good Corporate Governance dan operational excellence didukung oleh SDM profesional</li><br/>
+                    <li>Memberikan nilai tambah dan manfaat bagi seluruh stakeholder</li>
+                </ol>
+                </span>
+                </p>
             </div>
 
 
@@ -305,9 +315,9 @@ _________________________________________________________ -->
                         <h4>Hubungi Kami</h4>
 
                         <ul>
-                            <li><a href="<?php echo base_url() ?>">Kontak</a>
+                            <li><a href="<?php echo base_url() ?>home/kontak">Kontak</a>
                             </li>
-                            <li><a href="<?php echo base_url() ?>">FAQ</a>
+                            <li><a href="<?php echo base_url() ?>home/faq">FAQ</a>
                             </li>
                         </ul>
 
