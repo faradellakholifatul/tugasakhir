@@ -4,10 +4,10 @@
     
     class Pengguna_model extends CI_Model {
 
-        public function list($limit, $start)
+        public function list()
         {
-            $query = $this->db->get('user', $limit, $start);
-            return ($query->num_rows()>0) ? $query->result() :false;
+            $query = $this->db->get('user');
+            return $query->result();
         }
 
         public function getTotal()

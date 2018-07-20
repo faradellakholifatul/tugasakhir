@@ -5,10 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produk_model extends CI_Model {
 
-    public function list($limit, $start)
+        public function list()
         {
-            $query = $this->db->get('produk', $limit, $start);
-            return ($query->num_rows()>0) ? $query->result() :false;
+            $query = $this->db->get('produk');
+            return $query->result();
         }
 
         public function getTotal()

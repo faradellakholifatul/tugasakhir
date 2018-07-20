@@ -3,16 +3,10 @@
     defined('BASEPATH') OR exit('No direct script access allowed');
     
     class Kategori_model extends CI_Model {
-       /*public function list2()
+       public function list()
         {
             $query = $this->db->get('kategori_produk');
             return $query->result();
-        }*/
-
-        public function list($limit, $start)
-        {
-            $query = $this->db->get('kategori_produk', $limit, $start);
-            return ($query->num_rows()>0) ? $query->result() :false;
         }
 
         public function getTotal()
