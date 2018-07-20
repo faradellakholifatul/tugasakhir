@@ -161,11 +161,11 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="#">Etical</a>
+                                                <li><a href="<?php echo base_url()?>home/etical">Etical</a>
                                                 </li>
-                                                <li><a href="#">Generic</a>
+                                                <li><a href="<?php echo base_url()?>home/generic">Generic</a>
                                                 </li>
-                                                <li><a href="#">Lainnya</a>
+                                                <li><a href="<?php echo base_url()?>home/lainnya">Lainnya</a>
                                                 </li>
                                         </div>
                                     </div>
