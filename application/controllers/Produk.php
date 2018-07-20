@@ -28,47 +28,12 @@ class Produk extends CI_Controller {
     public function index()
     { 
         $kategori = $this->Produk_model->get_kategori();
-        $data = [];
-        $total = $this->Produk_model->getTotal();
-
-        if ($total > 0) {
-            $limit = 2;
-            $start = $this->uri->segment(3, 0);
-
-            $config = [
-                'base_url' => base_url() . 'produk/index',
-                'total_rows' => $total,
-                'per_page' => $limit,
-                'uri_segment' => 3,
-
-                // Bootstrap 3 Pagination
-                'first_link' => '&laquo;',
-                'last_link' => '&raquo;',
-                'next_link' => 'Next',
-                'prev_link' => 'Prev',
-                'full_tag_open' => '<ul class="pagination">',
-                'full_tag_close' => '</ul>',
-                'num_tag_open' => '<li>',
-                'num_tag_close' => '</li>',
-                'cur_tag_open' => '<li class="active"><span>',
-                'cur_tag_close' => '<span class="sr-only">(current)</span></span></li>',
-                'next_tag_open' => '<li>',
-                'next_tag_close' => '</li>',
-                'prev_tag_open' => '<li>',
-                'prev_tag_close' => '</li>',
-                'first_tag_open' => '<li>',
-                'first_tag_close' => '</li>',
-                'last_tag_open' => '<li>',
-                'last_tag_close' => '</li>',
-            ];
-            $this->pagination->initialize($config);
 
             $data = [
-                'results' => $this->Produk_model->list($limit, $start),
-                'links' => $this->pagination->create_links(),
+                'list' => $this->Produk_model->list(),
                 'kategori' => $kategori
             ];
-        }
+        
 
         $this->load->view('produk/index', $data);
     }

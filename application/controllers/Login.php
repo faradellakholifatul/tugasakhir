@@ -34,7 +34,6 @@ class Login extends CI_Controller {
             if($this->Login_model->login($username, $password))
             {
                 if($this->session->privilege=="Administrator")
-<<<<<<< HEAD
                 { redirect('admin/index'); 
                 }
                 else
@@ -50,18 +49,6 @@ class Login extends CI_Controller {
         {
             redirect('home');
         }
-=======
-                { redirect('admin/'); }
-                else
-                { redirect('apotek/'); }
-            }
-            else
-            {
-                echo 12345;
-                //redirect('apotek/login');
-            }
-        }
->>>>>>> 987ccd30fb242ed775aa5542cca737eb3677f209
     }
 
     public function logout()
