@@ -177,7 +177,8 @@ if($this->session->privilege != 'Administrator')
                                 Ubah
                               </a>
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
-                              <?php echo form_close() ?></td>
+                              <?php echo form_close() ?>
+                          </td>
                         </tr>
                       <?php } ?>
                       </tbody>
