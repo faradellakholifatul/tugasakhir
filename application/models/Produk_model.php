@@ -11,6 +11,12 @@ class Produk_model extends CI_Model {
             return $query->result();
         }
 
+        public function getEtical()
+        {
+            $query = $this->db->query('select*from produk where kategori=1');
+            return $query->$result;
+        }
+
         public function getTotal()
         {
             return $this->db->count_all('produk');
