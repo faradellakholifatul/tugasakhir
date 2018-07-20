@@ -48,7 +48,8 @@ class Produk_model extends CI_Model {
             $this->db->where('id_produk', $id_produk);
             $this->db->delete('produk');
         }
-
+	
+	//mengambil kategori
         public function get_kategori()
         {
             $query = $this->db->get('kategori_produk');

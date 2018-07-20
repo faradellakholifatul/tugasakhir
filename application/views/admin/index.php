@@ -141,6 +141,7 @@
 
         <!-- page content -->
         <div class="right_col">
+		
         </div>        
         <!-- /page content -->
 

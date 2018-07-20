@@ -13,6 +13,8 @@
                redirect('home'); 
             }
         }
+		
+		//load view admin index
         public function index()
         {
             $this->load->view('admin/index');
