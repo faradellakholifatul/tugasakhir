@@ -17,6 +17,18 @@ class Produk_model extends CI_Model {
             return $query->$result;
         }
 
+        public function getGeneric()
+        {
+            $query = $this->db->query('select*from produk where kategori=2');
+            return $query->$result;
+        }
+
+        public function getLainnya()
+        {
+            $query = $this->db->query('select*from produk where kategori=4');
+            return $query->$result;
+        }
+
         public function getTotal()
         {
             return $this->db->count_all('produk');
