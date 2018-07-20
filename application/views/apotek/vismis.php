@@ -341,14 +341,14 @@ _________________________________________________________ -->
 
                         <h4>Produk</h4>
 
-                        <ul>
-                            <li><a href="<?php echo base_url() ?>home/etikal">Etikal</a>
-                            </li>
-                            <li><a href="<?php echo base_url() ?>">Generic</a>
-                            </li>
-                            <li><a href="<?php echo base_url() ?>">Lainnya</a>
-                            </li>
-                        </ul>
+                            <ul>
+                                <li><a href="<?php echo base_url()?>home/etical">Etical</a>
+                                </li>
+                                <li><a href="<?php echo base_url()?>home/generic">Generic</a>
+                                </li>
+                                <li><a href="<?php echo base_url()?>home/lainnya">Lainnya</a>
+                                </li>
+                            </ul>
 
                         <hr class="hidden-md hidden-lg">
 
