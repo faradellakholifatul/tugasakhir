@@ -44,7 +44,7 @@
 
     <!-- *** TOPBAR ***
  _________________________________________________________ -->
-    <div id="top">
+ <div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
             </div>
@@ -120,9 +120,28 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="basket.html">
-                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 items in cart</span>
-                    </a>
+                    
+                    <?php
+                        if($this->session->privilege == 'User')
+                    { ?>
+                        <a class="btn btn-default navbar-toggle" href="<?php echo base_url() ?>home/basket">
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Cart</span>
+                        </a>
+                    <?php }
+                        else if($this->session->privilege == 'Administrator')
+                    { ?>
+                        <a class="btn btn-default navbar-toggle" href="<?php echo base_url() ?>home/basket">
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Cart</span>
+                        </a>
+                    <?php }
+                        else
+                    { ?>
+                        <a class="btn btn-default navbar-toggle" href="#" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Cart</span>
+                        </a>
+                    <?php }
+                    ?>
+                       
                 </div>
                 
             </div>
@@ -141,9 +160,9 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="category.html">Profil Perusahaan</a>
+                                                <li><a href="<?php echo base_url()?>home/profper">Profil Perusahaan</a>
                                                 </li>
-                                                <li><a href="category.html">Visi dan Misi</a>
+                                                <li><a href="<?php echo base_url()?>home/vismis">Visi dan Misi</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -183,9 +202,9 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="#">Kontak</a>
+                                                <li><a href="<?php echo base_url() ?>home/kontak">Kontak</a>
                                                 </li>
-                                                <li><a href="#">FAQ</a>
+                                                <li><a href="<?php echo base_url() ?>home/faq">FAQ</a>
                                                 </li>
                                             </ul>
                                     </div>
@@ -202,7 +221,21 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
+                <?php
+                        if($this->session->privilege == 'User')
+                    { ?>
+                        <a href="<?php echo base_url() ?>home/basket" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
+                    <?php }
+                        else if($this->session->privilege == 'Administrator')
+                    { ?>
+                        <a href="<?php echo base_url() ?>home/basket" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
+                    <?php }
+                        else
+                    { ?>
+                        <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
+                    <?php }
+                    ?>
+                    
                 </div>
                 <!--/.nav-collapse -->
 
@@ -377,9 +410,9 @@ _________________________________________________________ -->
                         <h4>Hubungi Kami</h4>
 
                         <ul>
-                            <li><a href="<?php echo base_url() ?>">Kontak</a>
+                            <li><a href="<?php echo base_url() ?>home/kontak">Kontak</a>
                             </li>
-                            <li><a href="<?php echo base_url() ?>">FAQ</a>
+                            <li><a href="<?php echo base_url() ?>home/faq">FAQ</a>
                             </li>
                         </ul>
 
@@ -404,11 +437,11 @@ _________________________________________________________ -->
                         <h4>Produk</h4>
 
                         <ul>
-                            <li><a href="<?php echo base_url() ?>home/etikal">Etikal</a>
+                            <li><a href="<?php echo base_url() ?>home/etical">Etikal</a>
                             </li>
-                            <li><a href="<?php echo base_url() ?>">Generic</a>
+                            <li><a href="<?php echo base_url() ?>home/generic">Generic</a>
                             </li>
-                            <li><a href="<?php echo base_url() ?>">Lainnya</a>
+                            <li><a href="<?php echo base_url() ?>home/lainnya">Lainnya</a>
                             </li>
                         </ul>
 
@@ -429,7 +462,7 @@ _________________________________________________________ -->
                             <strong>Indonesia</strong>
                         </p>
 
-                        <a href="<?php echo base_url() ?>">Go to contact page</a>
+                        <a href="<?php echo base_url() ?>home/kontak">Go to contact page</a>
 
                         <hr class="hidden-md hidden-lg">
 
@@ -479,14 +512,10 @@ _________________________________________________________ -->
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">© 2015 Your name goes here.</p>
+                    <p class="pull-left">© 2015 Healthy Pharma</p>
 
                 </div>
-                <div class="col-md-6">
-                    <p class="pull-right">Template by <a href="https://bootstrapious.com/e-commerce-templates">Bootstrapious</a> & <a href="https://fity.cz">Fity</a>
-                         <!-- Not removing these links is part of the license conditions of the template. Thanks for understanding :) If you want to use the template without the attribution links, you can do so after supporting further themes development at https://bootstrapious.com/donate  -->
-                    </p>
-                </div>
+                
             </div>
         </div>
         <!-- *** COPYRIGHT END *** -->

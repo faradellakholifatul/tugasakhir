@@ -119,9 +119,28 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="basket.html">
-                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 items in cart</span>
-                    </a>
+                    
+                    <?php
+                        if($this->session->privilege == 'User')
+                    { ?>
+                        <a class="btn btn-default navbar-toggle" href="<?php echo base_url() ?>cart/insert_cart">
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Cart</span>
+                        </a>
+                    <?php }
+                        else if($this->session->privilege == 'Administrator')
+                    { ?>
+                        <a class="btn btn-default navbar-toggle" href="<?php echo base_url() ?>cart/insert_cart">
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Cart</span>
+                        </a>
+                    <?php }
+                        else
+                    { ?>
+                        <a class="btn btn-default navbar-toggle" href="#" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Cart</span>
+                        </a>
+                    <?php }
+                    ?>
+                       
                 </div>
                 
             </div>
@@ -160,11 +179,11 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="#">Etical</a>
+                                                <li><a href="<?php echo base_url()?>home/etical">Etical</a>
                                                 </li>
-                                                <li><a href="#">Generic</a>
+                                                <li><a href="<?php echo base_url()?>home/generic">Generic</a>
                                                 </li>
-                                                <li><a href="#">Lainnya</a>
+                                                <li><a href="<?php echo base_url()?>home/lainnya">Lainnya</a>
                                                 </li>
                                         </div>
                                     </div>
@@ -201,7 +220,21 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
+                <?php
+                        if($this->session->privilege == 'User')
+                    { ?>
+                        <a href="<?php echo base_url() ?>cart/insert_cart" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
+                    <?php }
+                        else if($this->session->privilege == 'Administrator')
+                    { ?>
+                        <a href="<?php echo base_url() ?>cart/insert_cart" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
+                    <?php }
+                        else
+                    { ?>
+                        <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
+                    <?php }
+                    ?>
+                    
                 </div>
                 <!--/.nav-collapse -->
 
@@ -244,13 +277,10 @@
 
                 <div class="col-md-12">
                     <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
+                        <li><a href="<?php echo base_url() ?>">Home</a>
                         </li>
-                        <li><a href="#">Ladies</a>
-                        </li>
-                        <li><a href="#">Tops</a>
-                        </li>
-                        <li>White Blouse Armani</li>
+                        <li><?php echo $data->nama_produk ?>
+                        </li>                        
                     </ul>
 
                 </div>
@@ -267,195 +297,83 @@
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked category-menu">
                                 <li>
-                                    <a href="category.html">Men <span class="badge pull-right">42</span></a>
-                                    <ul>
-                                        <li><a href="category.html">T-shirts</a>
-                                        </li>
-                                        <li><a href="category.html">Shirts</a>
-                                        </li>
-                                        <li><a href="category.html">Pants</a>
-                                        </li>
-                                        <li><a href="category.html">Accessories</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="active">
-                                    <a href="category.html">Ladies  <span class="badge pull-right">123</span></a>
-                                    <ul>
-                                        <li><a href="category.html">T-shirts</a>
-                                        </li>
-                                        <li><a href="category.html">Skirts</a>
-                                        </li>
-                                        <li><a href="category.html">Pants</a>
-                                        </li>
-                                        <li><a href="category.html">Accessories</a>
-                                        </li>
-                                    </ul>
+                                    <a href="<?php echo base_url() ?>home/etical">Etical</a>
                                 </li>
                                 <li>
-                                    <a href="category.html">Kids  <span class="badge pull-right">11</span></a>
-                                    <ul>
-                                        <li><a href="category.html">T-shirts</a>
-                                        </li>
-                                        <li><a href="category.html">Skirts</a>
-                                        </li>
-                                        <li><a href="category.html">Pants</a>
-                                        </li>
-                                        <li><a href="category.html">Accessories</a>
-                                        </li>
-                                    </ul>
+                                    <a href="<?php echo base_url() ?>home/generic">Generic</a>
                                 </li>
-
-                            </ul>
-
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default sidebar-menu">
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Brands <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
-                        </div>
-
-                        <div class="panel-body">
-
-                            <form>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">Armani (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">Versace (12)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">Carlo Bruni (15)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">Jack Honey (14)
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
-
-                            </form>
+                                <li>
+                                    <a href="<?php echo base_url() ?>home/lainnya">Lainnya</a>
+                                </li>
+                           </ul>
 
                         </div>
                     </div>
 
-                    <div class="panel panel-default sidebar-menu">
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Colours <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
-                        </div>
-
-                        <div class="panel-body">
-
-                            <form>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour white"></span> White (14)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour blue"></span> Blue (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour green"></span> Green (20)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour yellow"></span> Yellow (13)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> <span class="colour red"></span> Red (10)
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
-
-                            </form>
-
-                        </div>
-                    </div>
-
-                    <!-- *** MENUS AND FILTERS END *** -->
-
-                    <div class="banner">
-                        <a href="#">
-                            <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
-                        </a>
-                    </div>
+                    
+                    
                 </div>
 
                 <div class="col-md-9">
-
+                <?php echo form_open('Cart/insert_cart');?>
                     <div class="row" id="productMain">
                         <div class="col-sm-6">
                             <div id="mainImage">
-                                <img src="img/detailbig1.jpg" alt="" class="img-responsive">
+                                <img src="<?php echo base_url('assets/image/'.$data->gambar)?>" alt="" class="img-responsive" >
                             </div>
 
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon -->
-
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon -->
-
+                            
                         </div>
                         <div class="col-sm-6">
                             <div class="box">
-                                <h1 class="text-center">White Blouse Armani</h1>
-                                <p class="goToDescription"><a href="#details" class="scroll-to">Scroll to product details, material & care and sizing</a>
-                                </p>
-                                <p class="price">$124.00</p>
+                                <h1 class="text-center"><?php echo $data->nama_produk ?></h1>
+                                <p class="price"><?php echo "Rp ".$data->harga ?></p>
 
                                 <p class="text-center buttons">
-                                    <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a> 
-                                    <a href="basket.html" class="btn btn-default"><i class="fa fa-heart"></i> Add to wishlist</a>
+                                        <?php
+                                            if($this->session->privilege == 'User')
+                                                { ?>
+                                                    <a href="<?php echo base_url() ?>cart/insert_cart/<?php echo $this->uri->segment(3) ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                            <?php }
+                                            else if($this->session->privilege == 'Administrator')
+                                            { ?>
+                                                <a href="<?php echo base_url() ?>cart/insert_cart" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                            <?php }
+                                            else
+                                            { ?>
+                                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#login-modal"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <?php }
+                                        ?>
+
+                                        <?php
+                                            if($this->session->privilege == 'User')
+                                                { ?>
+                                                    <a href="<?php echo base_url() ?>cart/insert_cart"><i class="fa fa-heart"></i> Add to wishlist</a>
+                                            <?php }
+                                            else if($this->session->privilege == 'Administrator')
+                                            { ?>
+                                                <a href="<?php echo base_url() ?>cart/insert_cart"><i class="fa fa-heart"></i> Add to wishlist</a>
+                                            <?php }
+                                            else
+                                            { ?>
+                                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#login-modal"><i class="fa fa-heart"></i> Add to wishlist</a>
+                                        <?php }
+                                        ?>
+                                     
                                 </p>
-
-
+                                
+                            
                             </div>
 
-                            <div class="row" id="thumbs">
-                                <div class="col-xs-4">
-                                    <a href="img/detailbig1.jpg" class="thumb">
-                                        <img src="img/detailsquare.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="col-xs-4">
-                                    <a href="img/detailbig2.jpg" class="thumb">
-                                        <img src="img/detailsquare2.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="col-xs-4">
-                                    <a href="img/detailbig3.jpg" class="thumb">
-                                        <img src="img/detailsquare3.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                            </div>
+                            <div class="box" id="details">
+                        <p>
+                            <h4>Deskripsi Produk</h4>
+                            <p><?php echo $data->deskripsi ?></p>
+                        </p>
+    
+                    </div>
+                    <?php echo form_close()?>
+
                         </div>
 
                     </div>
@@ -463,24 +381,13 @@
 
                     <div class="box" id="details">
                         <p>
-                            <h4>Product details</h4>
-                            <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
-                            <h4>Material & care</h4>
-                            <ul>
-                                <li>Polyester</li>
-                                <li>Machine wash</li>
-                            </ul>
-                            <h4>Size & Fit</h4>
-                            <ul>
-                                <li>Regular fit</li>
-                                <li>The model (height 5'8" and chest 33") is wearing a size S</li>
-                            </ul>
-
-                            <blockquote>
-                                <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
-                                </p>
-                            </blockquote>
-
+                            <h4>Komposisi</h4>
+                            <p><?php echo $data->komposisi ?></p>
+                            <h4>Indikasi</h4>
+                            <p><?php echo $data->indikasi ?></p>
+                            <h4>Stok</h4>
+                            <p><?php echo $data->stok ?></p>
+                            
                             <hr>
                             <div class="social">
                                 <h4>Show it to your friends</h4>
@@ -493,191 +400,9 @@
                             </div>
                     </div>
 
-                    <div class="row same-height-row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="box same-height">
-                                <h3>You may also like these products</h3>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="product same-height">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.html">
-                                                <img src="img/product2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.html">
-                                                <img src="img/product2_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.html" class="invisible">
-                                    <img src="img/product2.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3>Fur coat</h3>
-                                    <p class="price">$143</p>
-                                </div>
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="product same-height">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.html">
-                                                <img src="img/product1.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.html">
-                                                <img src="img/product1_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.html" class="invisible">
-                                    <img src="img/product1.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3>Fur coat</h3>
-                                    <p class="price">$143</p>
-                                </div>
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="product same-height">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.html">
-                                                <img src="img/product3.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.html">
-                                                <img src="img/product3_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.html" class="invisible">
-                                    <img src="img/product3.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3>Fur coat</h3>
-                                    <p class="price">$143</p>
-
-                                </div>
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
+                    
                     </div>
-
-                    <div class="row same-height-row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="box same-height">
-                                <h3>Products viewed recently</h3>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="product same-height">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.html">
-                                                <img src="img/product2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.html">
-                                                <img src="img/product2_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.html" class="invisible">
-                                    <img src="img/product2.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3>Fur coat</h3>
-                                    <p class="price">$143</p>
-                                </div>
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="product same-height">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.html">
-                                                <img src="img/product1.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.html">
-                                                <img src="img/product1_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.html" class="invisible">
-                                    <img src="img/product1.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3>Fur coat</h3>
-                                    <p class="price">$143</p>
-                                </div>
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="product same-height">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="detail.html">
-                                                <img src="img/product3.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="detail.html">
-                                                <img src="img/product3_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="detail.html" class="invisible">
-                                    <img src="img/product3.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3>Fur coat</h3>
-                                    <p class="price">$143</p>
-
-                                </div>
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                    </div>
-
+                    </form>
                 </div>
                 <!-- /.col-md-9 -->
             </div>
@@ -695,9 +420,9 @@
                         <h4>Hubungi Kami</h4>
 
                         <ul>
-                            <li><a href="<?php echo base_url() ?>">Kontak</a>
+                            <li><a href="<?php echo base_url() ?>home/kontak">Kontak</a>
                             </li>
-                            <li><a href="<?php echo base_url() ?>">FAQ</a>
+                            <li><a href="<?php echo base_url() ?>home/faq">FAQ</a>
                             </li>
                         </ul>
 
@@ -722,11 +447,11 @@
                         <h4>Produk</h4>
 
                         <ul>
-                            <li><a href="<?php echo base_url() ?>home/etikal">Etikal</a>
+                            <li><a href="<?php echo base_url() ?>home/etical">Etikal</a>
                             </li>
-                            <li><a href="<?php echo base_url() ?>">Generic</a>
+                            <li><a href="<?php echo base_url() ?>home/generic">Generic</a>
                             </li>
-                            <li><a href="<?php echo base_url() ?>">Lainnya</a>
+                            <li><a href="<?php echo base_url() ?>home/lainnya">Lainnya</a>
                             </li>
                         </ul>
 
@@ -747,7 +472,7 @@
                             <strong>Indonesia</strong>
                         </p>
 
-                        <a href="<?php echo base_url() ?>">Go to contact page</a>
+                        <a href="<?php echo base_url() ?>home/kontak">Go to contact page</a>
 
                         <hr class="hidden-md hidden-lg">
 
@@ -797,14 +522,10 @@
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">© 2015 Your name goes here.</p>
+                    <p class="pull-left">© 2015 Healthy Pharma</p>
 
                 </div>
-                <div class="col-md-6">
-                    <p class="pull-right">Template by <a href="https://bootstrapious.com/e-commerce-templates">Bootstrapious</a> & <a href="https://fity.cz">Fity</a>
-                         <!-- Not removing these links is part of the license conditions of the template. Thanks for understanding :) If you want to use the template without the attribution links, you can do so after supporting further themes development at https://bootstrapious.com/donate  -->
-                    </p>
-                </div>
+                
             </div>
         </div>
         <!-- *** COPYRIGHT END *** -->

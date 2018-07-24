@@ -157,12 +157,14 @@ if($this->session->privilege != 'Administrator')
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                          
                           <th width="50%">Nama</th>
                           <th width="50%">
                           <a class="btn btn-primary" href="<?php echo base_url('kategori/create') ?>">
                             Tambah
                           </a>
                           </th>
+                         
                         </tr>
                       </thead>
 

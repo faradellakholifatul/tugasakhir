@@ -42,7 +42,7 @@
 
     <!-- *** TOPBAR ***
  _________________________________________________________ -->
-    <div id="top">
+ <div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
             </div>
@@ -57,7 +57,7 @@
                     { ?>
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                     </li>
-                    <li><a href="<?php echo base_url() ?>Home/register">Register</a>
+                    <li><a href="<?php echo base_url() ?>home/register">Register</a>
                     </li>
                     <?php } ?>
                 </ul>
@@ -87,7 +87,7 @@
                         </form>
                         <?php echo form_close() ?>
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.html"><strong>Register now</strong></a>! </p>
+                        <p class="text-center text-muted"><a href="<?php echo base_url()?>home/register"><strong>Register now</strong></a>! </p>
 
                     </div>
                 </div>
@@ -101,7 +101,7 @@
     <!-- *** NAVBAR ***
  _________________________________________________________ -->
 
-        <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
         <div class="container">
             <div class="navbar-header">
 
@@ -118,9 +118,28 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="basket.html">
-                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 items in cart</span>
-                    </a>
+                    
+                    <?php
+                        if($this->session->privilege == 'User')
+                    { ?>
+                        <a class="btn btn-default navbar-toggle" href="<?php echo base_url() ?>home/basket">
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Cart</span>
+                        </a>
+                    <?php }
+                        else if($this->session->privilege == 'Administrator')
+                    { ?>
+                        <a class="btn btn-default navbar-toggle" href="<?php echo base_url() ?>home/basket">
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Cart</span>
+                        </a>
+                    <?php }
+                        else
+                    { ?>
+                        <a class="btn btn-default navbar-toggle" href="#" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Cart</span>
+                        </a>
+                    <?php }
+                    ?>
+                       
                 </div>
                 
             </div>
@@ -139,9 +158,9 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="category.html">Profil Perusahaan</a>
+                                                <li><a href="<?php echo base_url()?>home/profper">Profil Perusahaan</a>
                                                 </li>
-                                                <li><a href="category.html">Visi dan Misi</a>
+                                                <li><a href="<?php echo base_url()?>home/vismis">Visi dan Misi</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -181,9 +200,9 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul>
-                                                <li><a href="#">Kontak</a>
+                                                <li><a href="<?php echo base_url() ?>home/kontak">Kontak</a>
                                                 </li>
-                                                <li><a href="#">FAQ</a>
+                                                <li><a href="<?php echo base_url() ?>home/faq">FAQ</a>
                                                 </li>
                                             </ul>
                                     </div>
@@ -200,7 +219,21 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
+                <?php
+                        if($this->session->privilege == 'User')
+                    { ?>
+                        <a href="<?php echo base_url() ?>home/basket" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
+                    <?php }
+                        else if($this->session->privilege == 'Administrator')
+                    { ?>
+                        <a href="<?php echo base_url() ?>home/basket" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
+                    <?php }
+                        else
+                    { ?>
+                        <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
+                    <?php }
+                    ?>
+                    
                 </div>
                 <!--/.nav-collapse -->
 
@@ -232,7 +265,7 @@
         </div>
         <!-- /.container -->
     </div>
-<!-- /#navbar -->
+    <!-- /#navbar -->
 
     <!-- *** NAVBAR END *** -->
 
@@ -279,16 +312,15 @@
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
-                            </div><div class="form-group">
+                            </div>
+                            <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i>
-                                <a href="#" data-toggle="modal" data-target="#register-modal"><b>Register</b></a></button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
                             </div>
-                        </form>
                         <?php echo form_close() ?>
                     </div>
                 </div>
@@ -313,7 +345,6 @@
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
                             </div>
-                        </form>
                         <?php echo form_close() ?>
                     </div>
                 </div>
@@ -327,20 +358,16 @@
 
         <!-- *** FOOTER ***
  _________________________________________________________ -->
-        <div id="footer" data-animate="fadeInUp">
+ <div id="footer" data-animate="fadeInUp">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
-                        <h4>Pages</h4>
+                        <h4>Hubungi Kami</h4>
 
                         <ul>
-                            <li><a href="text.html">About us</a>
+                            <li><a href="<?php echo base_url() ?>home/kontak">Kontak</a>
                             </li>
-                            <li><a href="text.html">Terms and conditions</a>
-                            </li>
-                            <li><a href="faq.html">FAQ</a>
-                            </li>
-                            <li><a href="contact.html">Contact us</a>
+                            <li><a href="<?php echo base_url() ?>home/faq">FAQ</a>
                             </li>
                         </ul>
 
@@ -351,7 +378,7 @@
                         <ul>
                             <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                             </li>
-                            <li><a href="register.html">Regiter</a>
+                            <li><a href="<?php echo base_url() ?>home/register">Register</a>
                             </li>
                         </ul>
 
@@ -362,28 +389,14 @@
 
                     <div class="col-md-3 col-sm-6">
 
-                        <h4>Top categories</h4>
-
-                        <h5>Men</h5>
+                        <h4>Produk</h4>
 
                         <ul>
-                            <li><a href="category.html">T-shirts</a>
+                            <li><a href="<?php echo base_url() ?>home/etical">Etikal</a>
                             </li>
-                            <li><a href="category.html">Shirts</a>
+                            <li><a href="<?php echo base_url() ?>home/generic">Generic</a>
                             </li>
-                            <li><a href="category.html">Accessories</a>
-                            </li>
-                        </ul>
-
-                        <h5>Ladies</h5>
-                        <ul>
-                            <li><a href="category.html">T-shirts</a>
-                            </li>
-                            <li><a href="category.html">Skirts</a>
-                            </li>
-                            <li><a href="category.html">Pants</a>
-                            </li>
-                            <li><a href="category.html">Accessories</a>
+                            <li><a href="<?php echo base_url() ?>home/lainnya">Lainnya</a>
                             </li>
                         </ul>
 
@@ -396,16 +409,15 @@
 
                         <h4>Where to find us</h4>
 
-                        <p><strong>Obaju Ltd.</strong>
-                            <br>13/25 New Avenue
-                            <br>New Heaven
-                            <br>45Y 73J
-                            <br>England
+                        <p><strong>Healthy Pharma</strong>
+                            <br>Jl Tata Surya 99
+                            <br>Malang
+                            <br>Jawa Timur
                             <br>
-                            <strong>Great Britain</strong>
+                            <strong>Indonesia</strong>
                         </p>
 
-                        <a href="contact.html">Go to contact page</a>
+                        <a href="<?php echo base_url() ?>home/kontak">Go to contact page</a>
 
                         <hr class="hidden-md hidden-lg">
 
@@ -416,26 +428,12 @@
 
                     <div class="col-md-3 col-sm-6">
 
-                        <h4>Get the news</h4>
-
-                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-
-                        <form>
-                            <div class="input-group">
-
-                                <input type="text" class="form-control">
-
-                                <span class="input-group-btn">
-
-			    <button class="btn btn-default" type="button">Subscribe!</button>
-
 			</span>
 
                             </div>
                             <!-- /input-group -->
                         </form>
 
-                        <hr>
 
                         <h4>Stay in touch</h4>
 
@@ -461,21 +459,6 @@
 
         <!-- *** FOOTER END *** -->
 
-     <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="Login">Register</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h4>Anda berhasil registrasi</h4>
-                        <p class="text-center text-muted"><a href="<?php echo base_url()?>"><strong>OK</strong></a>! </p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
 
@@ -484,14 +467,10 @@
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">© 2015 Your name goes here.</p>
+                    <p class="pull-left">© 2015 Healthy Pharma</p>
 
                 </div>
-                <div class="col-md-6">
-                    <p class="pull-right">Template by <a href="https://bootstrapious.com/e-commerce-templates">Bootstrapious</a> & <a href="https://fity.cz">Fity</a>
-                         <!-- Not removing these links is part of the license conditions of the template. Thanks for understanding :) If you want to use the template without the attribution links, you can do so after supporting further themes development at https://bootstrapious.com/donate  -->
-                    </p>
-                </div>
+                
             </div>
         </div>
         <!-- *** COPYRIGHT END *** -->
