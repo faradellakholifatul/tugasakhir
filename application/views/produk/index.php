@@ -82,7 +82,7 @@ if($this->session->privilege != 'Administrator')
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url('kategori/')?>">Kategori</a></li>
                       <li><a href="<?php echo base_url('produk/')?>">Produk</a></li>
-                      <li><a href="<?php echo base_url('pengguna/create')?>">User</a></li>
+                      <li><a href="<?php echo base_url('pengguna/')?>">User</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -150,7 +150,7 @@ if($this->session->privilege != 'Administrator')
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Pengguna</h2>
+                    <h2>Produk</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -167,6 +167,7 @@ if($this->session->privilege != 'Administrator')
                             Tambah
                           </a>
                           </th>
+                          
                         </tr>
                       </thead>
 

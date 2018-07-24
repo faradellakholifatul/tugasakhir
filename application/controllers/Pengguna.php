@@ -12,17 +12,17 @@
 		    $this->load->library('pagination');
             $this->load->model('Pengguna_model');
 
-            if($this->session->privilege != 'Administrator')
-            {
-                redirect('home');
-            }
+            // if($this->session->privilege != 'Administrator')
+            // {
+            //     redirect('home');
+            // }
         }
 
-    public function index()
-    {
-        $data['list'] = $this->Pengguna_model->list();
-        $this->load->view('pengguna/index', $data);
-    }
+        public function index()
+        {
+            $data['list'] = $this->Pengguna_model->list();
+            $this->load->view('pengguna/index', $data);
+        }
         
         public function create()
         {
@@ -85,6 +85,7 @@
     
                 if ($this->form_validation->run()) {
                     $result = $this->Pengguna_model->insert($data);
+             
                     if ($result) {
                         redirect('home');
                     }
@@ -93,7 +94,6 @@
                 }
             }
 
-            
         }
 
         public function show($id)
