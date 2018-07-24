@@ -62,11 +62,26 @@
             
         }
 
-        public function detail()
+        public function detail($id_produk)
         {
-            $this->load->view('apotek/detail');
+            $produk = $this->Produk_model->show($id_produk);
+            $data = ['data' => $produk];
+            $data['kategori'] = $this->Produk_model->get_kategori();
+            $this->load->view('apotek/detail', $data);
         }
     
+        public function basket($id_produk)
+        {
+            /*$produk = $this->Produk_model->show($id_produk);
+            $data = ['data' => $produk];
+            $data['kategori'] = $this->Produk_model->get_kategori();
+            $this->load->view('apotek/basket', $data);*/
+            $kategori  = $this->Produk_model->get_kategori();
+            $data = [
+                'list' => $this->Produk_model->list(),
+                'kategori' => $kategori];
+            $this->load->view('apotek/basket', $data);
+        }
     }
     
     /* End of file Home.php */
