@@ -8,6 +8,7 @@
         {
             parent::__construct();
             $this->load->library('session');
+            $this->load->model('Admin_model');
             if($this->session->privilege !='Administrator')
             { 
                redirect('home'); 
@@ -18,6 +19,17 @@
         public function index()
         {
             $this->load->view('admin/index');
+        }
+
+        public function transaksi()
+        {
+            $data['konfirmasi'] = $this->Admin_model->getData();
+            $this->load->view('admin/transaksi', $data);
+        }
+        public function change_status()
+        {
+            $this->Admin_model->change_status();
+            redirect('admin/transaksi','refresh');
         }
     
     }
