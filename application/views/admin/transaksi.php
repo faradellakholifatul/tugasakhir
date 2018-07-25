@@ -1,0 +1,102 @@
+
+<?php $this->load->view('layouts/header_admin'); ?>
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Transaksi</h2>
+                    <a class="btn btn-info pull-right" href="<?php echo base_url('laporan/') ?>">
+                        Laporan
+                    </a>
+                    <div class="clearfix">
+                    </div>
+                  </div>
+                  <div class="x_content">
+                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tanggal Order</th>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>No.Telp</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                      <?php foreach ($konfirmasi as $data => $value) { ?>
+                        <tr>
+                            <td><?php echo ++$data ?></td>
+                            <td><?php echo $value['tanggal']?></td>
+                            <td><?php echo $value['nama']?></td>
+                            <td><?php echo $value['alamat']?></td>
+                            <td><?php echo $value['notelp']?></td>
+                            <td><?php echo $value['email']?></td>
+                            <td>
+                            <?php 
+						    switch ($value['status']) {
+                                case 'belum di bayar':
+                                echo '<span class="label label-danger">Belum di bayar</span>';
+                                break;
+                                case 'sudah di bayar':
+                                echo '<span class="label label-success">Sudah di bayar</span>';
+                                break;
+                                default:
+                                echo '<span class="label label-default">Undefined</span>';
+                                break;
+                            } ?>
+                            </td><td>
+						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-change-status<?php echo $value['id'] ?>" data-id="<?php echo $value['id'] ?>" data-status="<?php echo $value['status'] ?>">
+							Ubah Status
+						</button>
+            <div class="modal fade" id="modal-change-status<?php echo $value['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="modal-change-status-Label" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-change-status-Label">Ubah Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="<?php echo base_url('Admin/change_status') ?>" method="post" id="konfirmasi-status-form<?php echo $value['id'] ?>">
+                      <input type="hidden" name="id" value="<?php echo $value['id']?>" id="id">
+                      <select class="form-control" name="status" id="status">
+                        <option value="belum di bayar">Belum di bayar</option>
+                        <option value="sudah di bayar">Sudah di bayar</option>
+                      </select>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" form="konfirmasi-status-form<?php echo $value['id'] ?>" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </td>
+          </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+        <!-- /page content -->
+
+        <?php $this->load->view('layouts/footer_admin'); ?>
