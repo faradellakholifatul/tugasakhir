@@ -43,37 +43,14 @@
                 $this->cart->update($value);
             }
             
-            
+            $this->cart->update($data);
             redirect('Cart');
         }
+
         public function remove_cart($rowid)			
         {
             $this->cart->remove($rowid);
             redirect('Cart');
-        }
-
-        public function order()
-        {
-            $set_order = array(
-                'fk_user' => $this->session->userdata("id"),
-                'tanggal' => date("Y-m-d"),
-                'status' => 1
-            );
-            $this->db->insert("order",$set_order);
-            $id_order = $this->db->insert_id();
-            $cart = $this->cart->contents();
-            foreach($cart as $key=>$value){
-                $set_detail = array(
-                    'fk_order' => $id_order,
-                    'fk_produk' => $value['id'],
-                    'jml' => $value['qty']
-                ); 
-                $this->db->insert("order_detail",$set_detail);
-            }
-            $this->cart->contents();
-            
-            redirect('Home','refresh');
-            
         }
 }
     
