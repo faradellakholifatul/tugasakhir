@@ -7,7 +7,7 @@
 
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="#">Home</a>
+                <li><a href="<?php echo base_url() ?>">Home</a>
                 </li>
                 <li>Profil Perusahaan</li>
             </ul>
