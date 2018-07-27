@@ -9,32 +9,24 @@
             parent ::__construct();
             $this->load->library('pdf');
             $this->load->model('Admin_model');
-            
+            if($this->session->privilege !='Administrator')
+            { 
+               redirect('home'); 
+            }
         }
 
         public function index()
         {
-            $order = $this->Admin_model->getData();
+            $order = $this->Admin_model->getLaporan();
             $data = [
-                "title" => "Order",
+                "title" => "Obat yang Paling Banyak Terjual",
                 "order" => $order
             ];
 
             $this->pdf->setPaper('A4', 'portrait');
-            $this->pdf->load_view('laporan', $data, 'laporan-contoh.pdf');
+            $this->pdf->load_view('laporan', $data, 'laporan-order.pdf');
         }
 
-        public function html()
-        {
-            $order = $this->Admin_model->getData();
-            $data = [
-                "title" => "Order",
-                "order" => $order
-            ];
-
-            $this->load->view('laporan', $data);
-            
-        }
     
     }
     

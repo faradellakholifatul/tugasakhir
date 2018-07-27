@@ -150,7 +150,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="<?php echo base_url()?>">Home</a>
+                    <li><a href="<?php echo base_url()?>">Home</a>
                     </li>
                     <li class="dropdown yamm-fw">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Profil<b class="caret"></b></a>
@@ -224,11 +224,19 @@
                 <?php
                         if($this->session->privilege == 'User')
                     { ?>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="<?php echo base_url()?>user/riwayat">Konfirmasi</a>
+                            </li>
+                        </ul>
                         <a href="<?php echo base_url() ?>cart/" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
                     <?php }
                         else if($this->session->privilege == 'Administrator')
                     { ?>
                         <a href="<?php echo base_url() ?>cart/" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Cart</span></a>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="<?php echo base_url()?>user/riwayat">Konfirmasi</a>
+                            </li>
+                        </ul>
                     <?php }
                         else
                     { ?>

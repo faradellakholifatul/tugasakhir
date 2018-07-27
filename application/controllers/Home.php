@@ -62,6 +62,12 @@
             
         }
 
+        public function history()
+        {
+            $this->load->view('apotek/historiorder');
+            
+        }
+
         public function detail($id_produk)
         {
             $produk = $this->Produk_model->show($id_produk);
