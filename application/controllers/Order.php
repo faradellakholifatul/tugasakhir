@@ -24,9 +24,10 @@
                     'jml' => $value['qty']
                 ); }
             $this->Order_model->insert_order_detail($data);
-			$total = $this->Order_model->get_order_total($id_order);
+            $total = $this->Order_model->get_order_total($id_order);
+            $this->Order_model->insert_total($id_order,$total);
 			$this->cart->destroy();
-			echo "<script>alert('Pemesanan berhasil,Total Harga : ".$total." Silahkan lakukan pembayaran pada No. Rek. 0000000000000000 dan kirimkan bukti pembayaran pada email info@healthypharma.com')</script>";
+			echo "<script>alert('Pemesanan berhasil,Total Harga : ".$total." Silahkan lakukan pembayaran pada No. Rek. 0000000000000000 dan kirimkan bukti pembayaran pada halaman konfirmasi')</script>";
             redirect('','refresh');
         }
     

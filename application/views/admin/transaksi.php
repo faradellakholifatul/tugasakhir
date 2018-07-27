@@ -32,7 +32,7 @@
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>No.Telp</th>
-                            <th>Email</th>
+                            <th>Bukti Transfer</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
@@ -46,18 +46,23 @@
                             <td><?php echo $value['nama']?></td>
                             <td><?php echo $value['alamat']?></td>
                             <td><?php echo $value['notelp']?></td>
-                            <td><?php echo $value['email']?></td>
+                            <td>
+                            <img src="<?php echo base_url('assets/buktitf/'.$value['bukti_tf'])?>" width="100" height="100">
+                            </td>
                             <td>
                             <?php 
 						    switch ($value['status']) {
-                                case 'belum di bayar':
-                                echo '<span class="label label-danger">Belum di bayar</span>';
-                                break;
                                 case 'sudah di bayar':
-                                echo '<span class="label label-success">Sudah di bayar</span>';
+                                echo '<span class="label label-danger">Sudah Dibayar</span>';
+                                break;
+                                case 'sudah di kirim':
+                                echo '<span class="label label-success">Sudah Dikirim</span>';
+                                break;
+                                case 'Belum Dikonfirmasi Admin':
+                                echo '<span class="label label-warning">Belum Dikonfirmasi Admin</span>';
                                 break;
                                 default:
-                                echo '<span class="label label-default">Undefined</span>';
+                                echo '<span class="label label-default">Belum Dibayar</span>';
                                 break;
                             } ?>
                             </td><td>
@@ -77,8 +82,8 @@
                     <form action="<?php echo base_url('Admin/change_status') ?>" method="post" id="konfirmasi-status-form<?php echo $value['id'] ?>">
                       <input type="hidden" name="id" value="<?php echo $value['id']?>" id="id">
                       <select class="form-control" name="status" id="status">
-                        <option value="belum di bayar">Belum di bayar</option>
                         <option value="sudah di bayar">Sudah di bayar</option>
+                        <option value="sudah di kirim">Sudah di kirim</option>
                       </select>
                     </form>
                   </div>
